@@ -24,9 +24,12 @@ main {
   background-color: rgb(197, 89, 89);
 }
 
+.nav-bar a {
+  color: white;
+}
+
 a {
   text-decoration: none;
-  color: white;
 }
 
 button {

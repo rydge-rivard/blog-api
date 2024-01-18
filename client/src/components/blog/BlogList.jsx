@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./BlogList.css";
+import { Link } from "react-router-dom";
 
 export default function BlogList() {
   const [blogList, setBlogList] = useState([]);
@@ -18,13 +19,13 @@ export default function BlogList() {
     getBlogs();
   }, []);
 
-  console.log(blogList);
-
   const blogs = blogList.map((blog) => (
-    <li key={blog.id}>
-      <p>{blog.title}</p>
-      <p>{blog.content}</p>
-    </li>
+    <Link to={"/blog/" + blog.id} key={blog.id}>
+      <li>
+        <p>{blog.title}</p>
+        <p>{blog.content}</p>
+      </li>
+    </Link>
   ));
 
   return <ul className="blog-grid">{blogs}</ul>;
