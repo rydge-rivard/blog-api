@@ -1,2 +1,1 @@
-# blog-api
-Creating a blog with a backend and two different front ends. One for editing posts and one for viewing.
+Creating a blog api that will be connected to a React front end.

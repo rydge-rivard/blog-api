@@ -8,6 +8,7 @@ const cors = require("cors");
 const indexRouter = require("./routes/index");
 const blogRouter = require("./routes/blog");
 const editRouter = require("./routes/edit");
+require("dotenv").config();
 
 const app = express();
 
