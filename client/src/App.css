@@ -20,15 +20,6 @@ main {
   color: white;
 }
 
-.nav-bar ul {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-bar ul li {
-  padding: 4px 16px;
-}
-
 .nav-bar ul li:hover {
   background-color: rgb(197, 89, 89);
 }
