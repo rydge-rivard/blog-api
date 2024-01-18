@@ -1,0 +1,17 @@
+.blog-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.blog-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 36px;
+  background-color: #efefef;
+  border-radius: 18px;
+  align-items: center;
+  flex-basis: 100%;
+}
