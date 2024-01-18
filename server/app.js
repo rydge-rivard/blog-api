@@ -3,12 +3,15 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const blogRouter = require("./routes/blog");
 const editRouter = require("./routes/edit");
 
 const app = express();
+
+app.use(cors());
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -46,6 +49,10 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+app.listen(8080, () => {
+  console.log("server listening on port 8080");
 });
 
 module.exports = app;
