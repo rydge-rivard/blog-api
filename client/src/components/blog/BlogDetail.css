@@ -1,13 +1,15 @@
 .blog-detail-wrapper {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 12px;
-  min-height: 50vh;
-  min-width: 260px;
-  max-width: 900px;
   background-color: #efefef;
   padding: 48px;
+}
+
+.blog-detail-wrapper * {
+  flex-basis: 100%;
+  text-align: center;
 }
 
 .blog-detail-wrapper h2 {
@@ -22,5 +24,8 @@
 
 main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   justify-content: center;
 }
