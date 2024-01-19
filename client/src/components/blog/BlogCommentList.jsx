@@ -9,7 +9,20 @@ export default function BlogCommentList({ comments }) {
     </li>
   ));
 
-  return <ul>{commentsList}</ul>;
+  if (comments.length < 1) {
+    return (
+      <>
+        <h1>No Comments</h1>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>Comments</h1>
+        <ul>{commentsList} </ul>
+      </>
+    );
+  }
 }
 
 BlogCommentList.propTypes = {

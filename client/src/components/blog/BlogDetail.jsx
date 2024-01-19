@@ -33,7 +33,6 @@ export default function BlogDetail() {
         <div>{data.blog.content}</div>
       </section>
       <section className="blog-detail-wrapper" key={data.blog._id}>
-        <h1>Comments</h1>
         <BlogCommentList comments={data.comments} />
       </section>
     </>
