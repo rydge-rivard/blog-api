@@ -2,16 +2,17 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavBar from "../utils/Nav";
 import "./BlogDetail.css";
+import BlogCommentList from "./BlogCommentList";
 
 export default function BlogDetail() {
   const { blogId } = useParams();
-  const [blogDetails, setBlogDetails] = useState([]);
+  const [blogData, setBlogData] = useState([]);
 
   async function getBlogDetail() {
     try {
       const response = await fetch(`http://localhost:8080/blog/${blogId}`);
-      const blog = await response.json();
-      setBlogDetails(blog);
+      const data = await response.json();
+      setBlogData([data]);
     } catch (err) {
       console.log(err);
     }
@@ -21,13 +22,18 @@ export default function BlogDetail() {
     getBlogDetail();
   }, []);
 
-  const blog = blogDetails.map((blog) => (
-    <content className="blog-detail-wrapper" key={blog.id}>
-      <h1>{blog.title}</h1>
-      <h2>{blog.date}</h2>
-      <p>By: Rydge Rivard</p>
-      <div>{blog.content}</div>
-    </content>
+  console.log(blogData);
+
+  const blog = blogData.map((data) => (
+    <>
+      <section className="blog-detail-wrapper" key={data.blog._id}>
+        <h1>{data.blog.title}</h1>
+        <h2>{data.blog.date}</h2>
+        <p>By: Rydge Rivard</p>
+        <div>{data.blog.content}</div>
+      </section>
+      <BlogCommentList comments={data.comments} />
+    </>
   ));
 
   return (
