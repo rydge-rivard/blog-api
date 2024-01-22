@@ -15,6 +15,7 @@ export default function BlogCommentList({ comments }) {
     return (
       <>
         <h1>No Comments</h1>
+        <CommentForm />
       </>
     );
   } else {

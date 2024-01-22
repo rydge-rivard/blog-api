@@ -10,7 +10,7 @@ export default function CommentForm() {
         <fieldset>
           <ul>
             <li>
-              <label htmlFor="author">*Author:</label>
+              <label htmlFor="author">*Your Name:</label>
               <input type="text" name="author" id="author" required />
             </li>
             <li>
@@ -25,7 +25,7 @@ export default function CommentForm() {
             </li>
           </ul>
         </fieldset>
-        <button>Submit</button>
+        <button>Add Comment</button>
       </form>
     </>
   );
