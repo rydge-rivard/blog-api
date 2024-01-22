@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import PublishForm from "./PubishForm";
 
 export default function BlogDetail() {
   const { blogId } = useParams();
@@ -44,7 +45,7 @@ export default function BlogDetail() {
                 />
               </li>
               <li key={data.blog._id + "content"}>
-                <label htmlFor="content">*Title:</label>
+                <label htmlFor="content">*Content:</label>
                 <textarea
                   name="content"
                   id="content"
@@ -59,6 +60,7 @@ export default function BlogDetail() {
           </fieldset>
           <button>Submit Changes</button>
         </form>
+        <PublishForm data={data} />
       </section>
     </>
   ));

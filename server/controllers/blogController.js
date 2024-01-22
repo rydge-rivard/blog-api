@@ -42,3 +42,17 @@ exports.blog_update = [
     }
   }),
 ];
+
+exports.blog_toggle_publish = asyncHandler(async (req, res, next) => {
+  const blog = await Blog.findByIdAndUpdate(req.params.id, {
+    published: true,
+  });
+  res.redirect(`http://localhost:5173/admin`);
+});
+
+exports.blog_toggle_unpublish = asyncHandler(async (req, res, next) => {
+  const blog = await Blog.findByIdAndUpdate(req.params.id, {
+    published: false,
+  });
+  res.redirect(`http://localhost:5173/admin`);
+});

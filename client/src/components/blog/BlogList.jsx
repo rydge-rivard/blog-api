@@ -10,7 +10,6 @@ export default function BlogList() {
       const response = await fetch(`http://localhost:8080/blog`);
       const blogs = await response.json();
       setBlogList(blogs);
-      console.log(blogs);
     } catch (err) {
       console.log(err);
     }
@@ -20,7 +19,8 @@ export default function BlogList() {
     getBlogs();
   }, []);
 
-  const blogs = blogList.map((blog) => (
+  const published = blogList.filter((blog) => blog.published !== false);
+  const blogs = published.map((blog) => (
     <Link to={"/blog/" + blog._id} key={blog._id}>
       <li>
         <p>{blog.title}</p>

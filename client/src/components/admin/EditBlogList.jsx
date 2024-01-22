@@ -24,6 +24,7 @@ export default function BlogList() {
       <li>
         <p>{blog.title}</p>
         <p>{blog.content}</p>
+        <div>{blog.published ? "PUBLISHED" : "DRAFT"}</div>
       </li>
     </Link>
   ));
