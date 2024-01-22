@@ -4,12 +4,16 @@ import { useState, useEffect } from "react";
 export default function BlogDetail() {
   const { blogId } = useParams();
   const [blogData, setBlogData] = useState([]);
+  const [content, setContent] = useState();
+  const [title, setTitle] = useState();
 
   async function getBlogDetail() {
     try {
       const response = await fetch(`http://localhost:8080/blog/${blogId}`);
       const data = await response.json();
       setBlogData([data]);
+      setContent(data.blog.content);
+      setTitle(data.blog.title);
     } catch (err) {
       console.log(err);
     }
@@ -21,29 +25,34 @@ export default function BlogDetail() {
 
   const blog = blogData.map((data) => (
     <>
-      <section className="blog-detail-wrapper" key={data.blog._id}>
-        <form action="" method="post">
+      <section className="blog-detail-wrapper">
+        <form
+          action={`http://localhost:8080/blog/${blogId}/update`}
+          method="post"
+        >
           <fieldset>
             <ul>
-              <li>
+              <li key={data.blog._id + "title"}>
                 <label htmlFor="title">*Title:</label>
                 <input
                   type="text"
                   name="title"
                   id="title"
                   required
-                  value={data.blog.title}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </li>
-              <li>
-                <label htmlFor="title">*Title:</label>
+              <li key={data.blog._id + "content"}>
+                <label htmlFor="content">*Title:</label>
                 <textarea
-                  name="title"
-                  id="title"
+                  name="content"
+                  id="content"
                   cols="70"
                   rows="10"
                   required
-                  value={data.blog.content}
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                 ></textarea>
               </li>
             </ul>

@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
+const { body, validationResult } = require("express-validator");
 
 exports.index = asyncHandler(async (req, res, next) => {
   const blogs = await Blog.find().sort({ date: -1 }).exec();
@@ -14,7 +15,30 @@ exports.blog_detail = asyncHandler(async (req, res, next) => {
     Comment.find({ blog: req.params.id }).sort({ date: -1 }).exec(),
   ]);
 
-  console.log(comments);
-
   res.json({ blog: blog, comments: comments });
 });
+
+exports.blog_update = [
+  body("title", "Title must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("content", "Content must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      console.log(errors);
+    } else {
+      const blog = await Blog.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        content: req.body.content,
+      });
+      res.redirect(`http://localhost:5173/admin`);
+    }
+  }),
+];
