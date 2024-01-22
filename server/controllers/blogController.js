@@ -56,3 +56,32 @@ exports.blog_toggle_unpublish = asyncHandler(async (req, res, next) => {
   });
   res.redirect(`http://localhost:5173/admin`);
 });
+
+exports.blog_new = [
+  body("title", "Title must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("content", "Content must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const publishedBool = req.body.admin === "on" ? "true" : "false";
+    const blog = new Blog({
+      title: req.body.title,
+      content: req.body.content,
+      published: publishedBool,
+      date: Date(),
+    });
+
+    if (!errors.isEmpty()) {
+      console.log(errors);
+    } else {
+      await blog.save();
+      res.redirect(`http://localhost:5173/admin`);
+    }
+  }),
+];

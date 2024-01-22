@@ -38,6 +38,7 @@ textarea {
 fieldset ul li {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .form-wrapper {
