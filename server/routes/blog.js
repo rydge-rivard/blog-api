@@ -11,5 +11,6 @@ router.post("/:id/unpublish", blog_controller.blog_toggle_unpublish);
 router.post("/new", blog_controller.blog_new);
 
 router.post("/:id/comment", comment_controller.comment_post);
+router.post("/comment/:id/delete", comment_controller.comment_delete);
 
 module.exports = router;

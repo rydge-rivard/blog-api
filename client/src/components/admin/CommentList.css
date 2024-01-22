@@ -1,0 +1,15 @@
+.comment-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.comment-wrapper button {
+  width: 120px;
+}
+
+.comment-wrapper form {
+  display: flex;
+  align-items: center;
+}

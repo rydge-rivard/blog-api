@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PublishForm from "./PubishForm";
+import CommentList from "./CommentList";
 
 export default function BlogDetail() {
   const { blogId } = useParams();
@@ -61,6 +62,7 @@ export default function BlogDetail() {
           <button>Submit Changes</button>
         </form>
         <PublishForm data={data} />
+        <CommentList comments={data.comments} />
       </section>
     </>
   ));

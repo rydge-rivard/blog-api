@@ -29,3 +29,8 @@ exports.comment_post = [
     }
   }),
 ];
+
+exports.comment_delete = asyncHandler(async (req, res, next) => {
+  const comment = await Comment.findByIdAndDelete(req.body.commentId).exec();
+  res.redirect(`http://localhost:5173/admin/${req.params.id}`);
+});
