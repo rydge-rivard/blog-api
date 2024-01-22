@@ -2,6 +2,8 @@ import Nav from "./Nav.jsx";
 import App from "../../App.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import BlogDetail from "../blog/BlogDetail.jsx";
+import AdminHome from "../admin/AdminHome.jsx";
+import EditBlog from "../admin/EditBlog.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Router = () => {
@@ -14,6 +16,16 @@ const Router = () => {
     {
       path: "/blog/:blogId",
       element: <BlogDetail />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/admin",
+      element: <AdminHome />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/admin/:blogId",
+      element: <EditBlog />,
       errorElement: <ErrorPage />,
     },
   ]);
