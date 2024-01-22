@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import CommentForm from "./CommentForm";
+import "./BlogCommentList.css";
 
 export default function BlogCommentList({ comments }) {
   console.log(comments);
@@ -19,7 +21,8 @@ export default function BlogCommentList({ comments }) {
     return (
       <>
         <h1>Comments</h1>
-        <ul>{commentsList} </ul>
+        <CommentForm />
+        <ul className="comments">{commentsList} </ul>
       </>
     );
   }

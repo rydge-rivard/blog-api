@@ -11,8 +11,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 exports.blog_detail = asyncHandler(async (req, res, next) => {
   const [blog, comments] = await Promise.all([
     Blog.findById(req.params.id).sort({ date: -1 }).exec(),
-    Comment.find({ blog_id: req.params.id }).sort({ date: -1 }).exec(),
+    Comment.find({ blog: req.params.id }).sort({ date: -1 }).exec(),
   ]);
+
+  console.log(comments);
 
   res.json({ blog: blog, comments: comments });
 });
